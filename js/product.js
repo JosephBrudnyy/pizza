@@ -5,12 +5,21 @@
 
     }
 
+    let updateProductPrice = (product, price)=>{
+        let productPrice = product.querySelector('.product__price-value');
+        productPrice.textContent = price;
+    }
+
     let changeProductSize = (target)=>{
         let product = myLib.closestItemByClass(target, 'product');
         let previousBtnActive = product.querySelector('.product__size.is-active')
+        let newPrice = target.getAttribute('data-product-size-price');
+
 
         previousBtnActive.classList.remove('is-active')
         target.classList.add('is-active')
+
+        updateProductPrice(product, newPrice);
     }
 
     let changeProductOrderInfo = target=>{
